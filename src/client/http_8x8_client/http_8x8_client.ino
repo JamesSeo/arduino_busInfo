@@ -93,25 +93,10 @@ String getData() {
 void setup() {
 
   USE_SERIAL.begin(115200);
-  // USE_SERIAL.setDebugOutput(true);
-
-
-  //
-  //  for (uint8_t t = 4; t > 0; t--) {
-  //    USE_SERIAL.printf("[SETUP] WAIT %d...\n", t);
-  //    USE_SERIAL.flush();
-  //    delay(1000);
-  //  }
-  //
+ 
    WiFi.mode(WIFI_STA);
-  WiFiMulti.addAP("seo-ap", "gogofish");
-  //WiFiMulti.addAP("seo_egg_5GHz", "archi2011");
-  ////i.style cafe 2G
-  //// WiFiMulti.addAP("i.style cafe 2G", "01234567");
-
-  //WiFiMulti.addAP("KT_GiGA_2G_Wave2_36C1","6dbbaxg502");
-  
-  //WiFi.begin("seo-ap", "gogofish"); // Initiate connection to the Wi-Fi network
+  WiFiMulti.addAP("ap-id", "ap-password");
+ 
  
   while (WiFiMulti.run() != WL_CONNECTED) {
     delay(500);
@@ -119,14 +104,7 @@ void setup() {
   }
   Serial.println("Connected!");
   delay(1000);
-  configTime(28800, 0, "3.asia.pool.ntp.org", "time.nist.gov");
-  //matrix.setIntensity(3); // Use a value between 0 and 15 for brightness
-  //matrix.setRotation(0, 1); // The first display is position upside down
-  //matrix.setRotation(1, 1); // The first display is position upside down
-  //matrix.setRotation(2, 1); // The first display is position upside down
-  //matrix.setRotation(3, 1); // The first display is position upside down
-
-
+ 
 }
 
 void loop() {
@@ -135,15 +113,7 @@ void loop() {
   time_t now = time(nullptr);
   String time = String(ctime(&now));
   time.trim();
-  //  time.substring(11, 19).toCharArray(time_value, 10);
-  //  matrix.drawChar(2, 0, time_value[0], HIGH, LOW, 1); // H
-  //  matrix.drawChar(8, 0, time_value[1], HIGH, LOW, 1); // HH
-  //  matrix.drawChar(14, 0, time_value[2], HIGH, LOW, 1); // HH:
-  //  matrix.drawChar(20, 0, time_value[3], HIGH, LOW, 1); // HH:M
-  //  matrix.drawChar(26, 0, time_value[4], HIGH, LOW, 1); // HH:MM
 
-
-  // matrix.write(); // Send bitmap to display
   delay(10000);
   String info = getData();
   //String info = "0123456789";
